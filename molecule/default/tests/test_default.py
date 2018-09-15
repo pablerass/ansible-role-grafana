@@ -9,7 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_service(host):
     """Test service."""
-    service = host.service("grafana")
+    service = host.service("grafana-server")
     assert service.is_enabled
     assert service.is_running
 

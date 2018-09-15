@@ -1,0 +1,16 @@
+---
+- name: "Required packages"
+  package:
+    name: "{{ item }}"
+  with_items:
+    - "apt-transport-https"
+
+- name: "APT key"
+  apt_key:
+    url: "{{ grafana_apt_key }}"
+
+- name: "APT repository"
+  apt_repository:
+    repo: "{{ grafana_apt_repo }}"
+    filename: "grafana"
+    update_cache: true

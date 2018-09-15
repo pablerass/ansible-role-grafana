@@ -1,0 +1,15 @@
+---
+- name: "RPM key"
+  rpm_key:
+    key: "{{ item }}"
+  with_items: "{{ grafana_yum_keys }}"
+
+- name: "YUM repository"
+  yum_repository:
+    name: "grafana"
+    description: "Grafana YUM Repository"
+    baseurl: "{{ grafana_yum_repo }}"
+    file: "grafana"
+    gpgkey: "{{ grafana_yum_keys|join(' ') }}"
+    gpgcheck: true
+    repo_gpgcheck: true

@@ -1,17 +1,22 @@
 ---
 galaxy_info:
-  role_name: grafana
-  author: pablerass
-  description: Install a Grafana server
-  license: LGPLv3
+  role_name: "grafana"
+  author: "pablerass"
+  description: "Install a Grafana server"
+  license: "LGPLv3"
   min_ansible_version: 2.6
   platforms:
-    - name: Ubuntu
+    - name: "Ubuntu"
       versions:
-        - xenial
-        - bioninc
-    - name: CentOS
+        - "xenial"
+        # grafana package is not available
+        # - "bioninc"
+    - name: "CentOS"
       versions:
         - 7
+    - name: "Debian"
+      versions:
+        - "jessie"
+        - "stretch"
   galaxy_tags: []
 dependencies: []

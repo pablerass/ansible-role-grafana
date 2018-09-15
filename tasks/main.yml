@@ -1,2 +1,29 @@
 ---
 # tasks file for ansible-role-grafana
+- name: "Specific OS variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: "Specific OS tasks"
+  include_tasks: "{{ os_tasks }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+  loop_control:
+    loop_var: "os_tasks"
+
+- name: "Package"
+  package:
+    name: "{{ grafana_package }}"
+
+- name: "Service"
+  service:
+    name: "{{ grafana_service }}"
+    state: "started"
+    enabled: true

@@ -1,0 +1,3 @@
+---
+grafana_apt_repo: "deb https://packagecloud.io/grafana/stable/{{ ansible_distribution|lower }}/ {{ ansible_distribution_release }} main"
+grafana_apt_key: "https://packagecloud.io/gpg.key"

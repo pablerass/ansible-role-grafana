@@ -1,0 +1,5 @@
+---
+grafana_yum_repo: "https://packagecloud.io/grafana/stable/el/{{ ansible_distribution_major_version }}/$basearch"
+grafana_yum_keys:
+  - "https://packagecloud.io/gpg.key"
+  - "https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana"
